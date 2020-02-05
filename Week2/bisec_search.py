@@ -1,15 +1,12 @@
-
-
-
-x = 25
-epsilon = 0.001
+x = 29
+epsilon = 0.1
 numGuesses = 0
 low = 1.0
 high = x
 ans = (high + low) / 2.0
 
 while abs(ans**2 - x) >= epsilon:
-    print('low = ' + str(low) + ' high = ' + str(high) + ' ans = ' + str(ans))
+    print('pass nº ' + str(numGuesses) + ' | low = ' + str(low) + ' | high = ' + str(high) + ' | ans = ' + str(ans))
     numGuesses += 1
     
     if ans**2 < x:
@@ -18,7 +15,8 @@ while abs(ans**2 - x) >= epsilon:
         high = ans
         
     ans = (high + low) / 2.0
+    # chk1 = abs(ans**2)
+    # chk2 = abs(ans**2 - x)
     
 print('numGuesses = ' + str(numGuesses))
 print(str(ans) + ' is close to square root of ' + str(x))
-
