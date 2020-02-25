@@ -1,0 +1,44 @@
+Welcome to the game, Hangman!
+I am thinking of a word that is len(SECRETWORD) letters long.
+-----------
+checa 8 tentativas
+    vc tem x tentativas
+    se todas letras existem em palavraSecreta
+        Congratulations, you won!
+    senão:
+        You have TENTATIVAS guesses left.
+        Available letters: BCDEGHIKLMNPQRTUWXYZ
+        INPUT - Please guess a letter: m
+        se letra existe em palavraSecreta e não está em letrasTentadas
+            adiciona letra a letras tentadas
+            Good guess: _ a_ _
+            -----------
+        senao: se existe em letrasTentadas
+            Oops! You've already guessed that letter: _ a_ _
+            -----------
+            input novamente - letra
+        senão:
+            Oops! That letter is not in my word: _ a_ _
+            -----------
+            adiciona letra a letrasTentadas
+            tentativa -1
+
+    se tentativas <= 0
+        Sorry, you ran out of guesses. The word was XXXXXXX.
+
+
+Welcome to the game, Hangman!
+I am thinking of a word that is 4 letters long.
+-------------
+You have 8 guesses left.
+Available letters: abcdefghijklmnopqrstuvwxyz
+Please guess a letter: a
+Good guess: _ a_ _
+------------
+You have 8 guesses left.
+Available letters: bcdefghijklmnopqrstuvwxyz
+Please guess a letter: a
+Oops! You've already guessed that letter: _ a_ _
+------------
+Congratulations, you won!
+        

@@ -3,7 +3,8 @@ animals = { 'a': ['aardvark'], 'b': ['baboon'], 'c': ['coati']}
 animals['d'] = ['donkey']
 animals['d'].append('dog')
 animals['d'].append('dingo')
-
+# animals['e'] = ['eagle']
+# animals['f'] = ['fox', 'flamingo', 'ferret', 'falcon']
 
 def how_many(aDict):
     '''
@@ -11,18 +12,16 @@ def how_many(aDict):
 
     returns: int, how many values are in the dictionary.
     '''
-    count = 0
-    for i in aDict.values():
-        count += len(i)
-    
-    return count
-
-
-    # count = 0
-    # for value in aDict.values():
-    #     for v in value:
-    #      count  += 1
-    # return count
+    val = 0
+    biggest = 0
+    if aDict == {}:
+        val = None
+    else:
+        for i in aDict.keys():
+            if len(aDict[i]) > biggest:
+                biggest = len(aDict[i])
+                val = i
+    return val
 
 print(how_many(animals))
 # >>> 6
