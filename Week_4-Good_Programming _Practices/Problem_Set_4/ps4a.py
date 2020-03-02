@@ -15,7 +15,7 @@ SCRABBLE_LETTER_VALUES = {
 # Helper code
 # (you don't need to understand this helper code)
 
-WORDLIST_FILENAME = "words.txt"
+WORDLIST_FILENAME = "C:/Users/Marcos/Git/MITx-6.00.1x/Week_4-Good_Programming _Practices/Problem_Set_4/words.txt"
 
 def loadWords():
     """
@@ -71,7 +71,20 @@ def getWordScore(word, n):
     n: integer (HAND_SIZE; i.e., hand size required for additional points)
     returns: int >= 0
     """
-    # TO DO ... <-- Remove this comment when you code this function
+    # Loop Contagem pontos
+    pontos = 0
+    for i in word:
+        # soma valor de cada letra
+        pontos += SCRABBLE_LETTER_VALUES[i]
+    
+    # multiplica por numero de letras
+    pontos *= len(word)
+    
+    # checa Fullhand - add 50
+    if len(word) == n:
+        pontos += 50
+    
+    return pontos
 
 
 
@@ -142,7 +155,16 @@ def updateHand(hand, word):
     hand: dictionary (string -> int)    
     returns: dictionary (string -> int)
     """
-    # TO DO ... <-- Remove this comment when you code this function
+    # copiando dicionatio (hand)
+    handCopy = hand.copy()
+    
+    # loop busca/del
+    for letra in word:
+        # checa se existe letra no dicionario
+        if letra in handCopy:
+            handCopy[letra] -= 1
+    
+    return handCopy
 
 
 
@@ -160,7 +182,22 @@ def isValidWord(word, hand, wordList):
     hand: dictionary (string -> int)
     wordList: list of lowercase strings
     """
-    # TO DO ... <-- Remove this comment when you code this function
+    # copiando dicionatio (hand)
+    handVerify = hand.copy()
+    
+    # checa palavra na wordList
+    if word in wordList:
+        # loop busca/del
+        for letra in word:
+            # checa se existe letra no dicionario
+            if letra in handVerify and handVerify[letra] > 0:
+                handVerify[letra] -= 1
+            else:
+                return False
+    else:
+        return False
+    
+    return True
 
 
 #
@@ -175,6 +212,8 @@ def calculateHandlen(hand):
     returns: integer
     """
     # TO DO... <-- Remove this comment when you code this function
+    handList = sum(list(hand.values()))
+    return handList
 
 
 
