@@ -15,7 +15,7 @@ SCRABBLE_LETTER_VALUES = {
 # Helper code
 # (you don't need to understand this helper code)
 
-WORDLIST_FILENAME = "C:/Users/Marcos/Git/MITx-6.00.1x/Week_4-Good_Programming _Practices/Problem_Set_4/words.txt"
+WORDLIST_FILENAME = "C:/Users/Marcos/Git/MITx-6.00.1x/Week_4-Good_Programming _Practices/Problem_Set_4/wordsCopy.txt"
 
 def loadWords():
     """
@@ -49,13 +49,13 @@ def getFrequencyDict(sequence):
         freq[x] = freq.get(x,0) + 1
     return freq
 	
-
 # (end of helper code)
 # -----------------------------------
 
 #
 # Problem #1: Scoring a word
 #
+
 def getWordScore(word, n):
     """
     Returns the score for a word. Assumes the word is a valid word.
@@ -86,11 +86,10 @@ def getWordScore(word, n):
     
     return pontos
 
-
-
 #
 # Problem #2: Make sure you understand how this function works and what it does!
 #
+
 def displayHand(hand):
     """
     Displays the letters currently in the hand.
@@ -111,6 +110,7 @@ def displayHand(hand):
 #
 # Problem #2: Make sure you understand how this function works and what it does!
 #
+
 def dealHand(n):
     """
     Returns a random hand containing n lowercase letters.
@@ -139,6 +139,7 @@ def dealHand(n):
 #
 # Problem #2: Update a hand by removing letters
 #
+
 def updateHand(hand, word):
     """
     Assumes that 'hand' has all the letters in word.
@@ -166,11 +167,10 @@ def updateHand(hand, word):
     
     return handCopy
 
-
-
 #
 # Problem #3: Test word validity
 #
+
 def isValidWord(word, hand, wordList):
     """
     Returns True if word is in the wordList and is entirely
@@ -199,7 +199,6 @@ def isValidWord(word, hand, wordList):
     
     return True
 
-
 #
 # Problem #4: Playing a hand
 #
@@ -212,8 +211,8 @@ def calculateHandlen(hand):
     returns: integer
     """
     # TO DO... <-- Remove this comment when you code this function
-    handList = sum(list(hand.values()))
-    return handList
+    
+    return sum(hand.values())
 
 
 
@@ -241,32 +240,46 @@ def playHand(hand, wordList, n):
     """
     # BEGIN PSEUDOCODE <-- Remove this comment when you code this function; do your coding within the pseudocode (leaving those comments in-place!)
     # Keep track of the total score
+    score = 0
     
     # As long as there are still letters left in the hand:
-    
+    while calculateHandlen(hand) > 0:
         # Display the hand
+        # print(hand)
+        print('Current Hand: ', end='')
+        displayHand(hand)
         
         # Ask user for input
-        
+        userInput = input('Enter word, or a "." to indicate that you are finished: ')
+                
         # If the input is a single period:
-        
+        if userInput == '.':        
             # End the game (break out of the loop)
+            break
 
-            
         # Otherwise (the input is not a single period):
-        
-            # If the word is not valid:
+        else:
             
+            # If the word is not valid:
+            if isValidWord(userInput, hand, wordList) == False:
                 # Reject invalid word (print a message followed by a blank line)
+                print('Invalid word, please try again.')
+                print('')
 
             # Otherwise (the word is valid):
-
+            else:
                 # Tell the user how many points the word earned, and the updated total score, in one line followed by a blank line
+                score += getWordScore(userInput,n)
+                print('\"' + userInput + '\" earned ' + str(getWordScore(userInput,n)) + ' points. Total: ' + str(score) + ' points')
+                print('')
                 
                 # Update the hand 
-                
-
+                hand = updateHand(hand, userInput)
+        
     # Game is over (user entered a '.' or ran out of letters), so tell user the total score
+    print('')
+    print('The gamehas ended. Total score: ' + str(score) + ' points.')
+    print('')
 
 
 #
@@ -287,10 +300,7 @@ def playGame(wordList):
     """
     # TO DO ... <-- Remove this comment when you code this function
     print("playGame not yet implemented.") # <-- Remove this line when you code the function
-   
-
-
-
+  
 #
 # Build data structures used for entire session and play game
 #
