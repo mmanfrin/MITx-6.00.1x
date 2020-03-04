@@ -48,23 +48,20 @@ def playHand(hand, wordList, n):
             # If the word is not valid:
             if isValidWord(userInput, hand, wordList) == False:
                 # Reject invalid word (print a message followed by a blank line)
-                print('Invalid word, please try again.')
-                print('')
+                print('Invalid word, please try again.\n')
 
             # Otherwise (the word is valid):
             else:
                 # Tell the user how many points the word earned, and the updated total score, in one line followed by a blank line
                 score += getWordScore(userInput,n)
-                print('\"' + userInput + '\" earned ' + str(getWordScore(userInput,n)) + ' points. Total: ' + str(score) + ' points')
-                print('')
+                print('\"' + userInput + '\" earned ' + str(getWordScore(userInput,n)) + ' points. Total: ' + str(score) + ' points' + '\n')
                 
                 # Update the hand 
                 hand = updateHand(hand, userInput)
         
     # Game is over (user entered a '.' or ran out of letters), so tell user the total score
     print('')
-    print('The gamehas ended. Total score: ' + str(score) + ' points.')
-    print('')
+    print('The gamehas ended. Total score: ' + str(score) + ' points.\n')
     
 wordList = loadWords()
 hand = {'h':1, 'i':1, 'c':1, 'z':1, 'm':2, 'a':1}

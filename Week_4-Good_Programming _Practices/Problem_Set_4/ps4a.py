@@ -15,7 +15,7 @@ SCRABBLE_LETTER_VALUES = {
 # Helper code
 # (you don't need to understand this helper code)
 
-WORDLIST_FILENAME = "C:/Users/Marcos/Git/MITx-6.00.1x/Week_4-Good_Programming _Practices/Problem_Set_4/wordsCopy.txt"
+WORDLIST_FILENAME = "C:/Users/Marcos/Git/MITx-6.00.1x/Week_4-Good_Programming _Practices/Problem_Set_4/words.txt"
 
 def loadWords():
     """
@@ -246,7 +246,7 @@ def playHand(hand, wordList, n):
     while calculateHandlen(hand) > 0:
         # Display the hand
         # print(hand)
-        print('Current Hand: ', end='')
+        print('\nCurrent Hand: ', end='')
         displayHand(hand)
         
         # Ask user for input
@@ -278,7 +278,7 @@ def playHand(hand, wordList, n):
         
     # Game is over (user entered a '.' or ran out of letters), so tell user the total score
     print('')
-    print('The gamehas ended. Total score: ' + str(score) + ' points.')
+    print('The game has ended. Total score: ' + str(score) + ' points.')
     print('')
 
 
@@ -299,7 +299,38 @@ def playGame(wordList):
     2) When done playing the hand, repeat from step 1    
     """
     # TO DO ... <-- Remove this comment when you code this function
-    print("playGame not yet implemented.") # <-- Remove this line when you code the function
+    # params
+    choice = ''
+    n = HAND_SIZE
+    hand = {}
+    # main loop
+    while choice != 'e':
+        # input do jogo
+        choice = input('Enter n to deal a new hand, r to replay the last hand, or e to end game: ')
+        
+        # se N - novo jogo
+        if choice == 'n':
+            # chama novo jogo
+            hand = dealHand(HAND_SIZE)
+            playHand(hand, wordList, n)
+        
+        # se R - replay jogo
+        elif choice == 'r':
+            # chama mao anterior
+            if hand == {}:
+                print('\nYou have not played a hand yet. Please play a new hand first!\n')
+            else:
+                playHand(hand, wordList, n)
+            
+        # se E - termina jogo
+        elif choice == 'e':
+            # termina o jogo
+            # print('\nGame Over!\n')
+            break
+        # senão - comando invalido
+        else:
+            print('\nInvalid command.\n')
+    return
   
 #
 # Build data structures used for entire session and play game
