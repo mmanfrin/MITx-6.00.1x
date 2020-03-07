@@ -1,7 +1,7 @@
-x = 29
+x = 9
 epsilon = 0.1
 numGuesses = 0
-low = 1.0
+low = 0.0
 high = x
 ans = (high + low) / 2.0
 
@@ -19,4 +19,4 @@ while abs(ans**2 - x) >= epsilon:
     # chk2 = abs(ans**2 - x)
     
 print('numGuesses = ' + str(numGuesses))
-print(str(ans) + ' is close to square root of ' + str(x))
+print(str(round(ans,2)) + ' is close to square root of ' + str(x))

@@ -35,7 +35,7 @@ class intSet(object):
 
 
 
-#s = intSet()
+s = intSet()
 #print(s)
 #s.insert(3)
 #s.insert(4)

@@ -1,19 +1,14 @@
-hand = {'a':1, 'q':1, 'b':2, 'y':2, 'e':1, 'i':1}
-word = 'abbeya'
+# Python program to illustrate 
+# enumerate function 
+l1 = ["eat","sleep","repeat"] 
+s1 = "geek"
 
-# copiando dicionatio (hand)
-handVerify = hand.copy()
+# creating enumerate objects 
+obj1 = enumerate(l1) 
+obj2 = enumerate(s1) 
 
-# loop busca/del
-for letra in word:
-    # checa se existe letra no dicionario
-    if letra in handVerify and handVerify[letra] > 0:
-        handVerify[letra] -= 1
-    else:
-        print('False')
-        break
-print('True')
+print("Return type:",type(obj1)) 
+print(list(enumerate(l1))) 
 
-# print(handVerify)
-
-x = list(hand.values())
+# changing start index to 2 from 0 
+print(list(enumerate(s1,2))) 
