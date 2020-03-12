@@ -1,14 +1,25 @@
-# Python program to illustrate 
-# enumerate function 
-l1 = ["eat","sleep","repeat"] 
-s1 = "geek"
+class Person(object):
+    def __init__(self, name, birthday=None, teste=None):
+        self.name = name
+        self.birthday = birthday
+        self.teste = teste
+        self.last_name = name.split(' ')[-1]
 
-# creating enumerate objects 
-obj1 = enumerate(l1) 
-obj2 = enumerate(s1) 
+    def get_last_name(self):
+        return self.last_name
 
-print("Return type:",type(obj1)) 
-print(list(enumerate(l1))) 
+    def __str__(self):
+        return 'Nome: ' + self.last_name + ', ' + self.name
 
-# changing start index to 2 from 0 
-print(list(enumerate(s1,2))) 
+    def __repr__(self):
+
+
+marcos = Person('Marcos Manfrin', None, 1)
+
+print(marcos)
+print(marcos.last_name)
+print(marcos.birthday)
+print(marcos.teste)
+
+
+print('.')
